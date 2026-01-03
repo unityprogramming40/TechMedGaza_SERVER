@@ -1,7 +1,6 @@
-
 const http = require('http');
 const socketIo = require('socket.io');
-const expressApp = require('./app'); // Express
+const expressApp = require('./app');
 
 // Main Controllers
 const PlayerController = require('./MainConrtollers/playerController');
@@ -15,36 +14,44 @@ const DeepBreathController = require('./PsychotherapyControllers/DeepBreathContr
 const WhiteboardController = require('./PsychotherapyControllers/WhiteboardController');
 const GroundingController = require('./PsychotherapyControllers/GroundingController');
 
-// GreenLegacy Controllers
+// Green Legacy Controllers
 const GreenLegacy = require('./GreenLegacyControlers/GreenManager');
 
-//FairWar Controlers
+// Fair War Controllers
 const FairWarManager = require('./FairWarControlers/FairWarManager');
 
-// Express
+// Emotions Tree Controllers
+const EmotionsTreeManager = require('./EmotionsTree/EmotionsTreeManager');
+
 const app = expressApp();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-// Initialize Psychotherapy Controllers
-new PlayerController(io);
-new AdminController(io);
-new EmptyChairController(io);
-new CinemaController(io);
-new OceanController(io);
-new DeepBreathController(io);
-new GroundingController(io);
-new WhiteboardController(io);
+const controllers = [
 
+    // Initialize Main Controllers
+    new PlayerController(io),
+    new AdminController(io),
 
-// Initialize GreenLegacy Controllers
-new GreenLegacy(io);
+    // Initialize Psychotherapy Controllers
+    new EmptyChairController(io),
+    new CinemaController(io),
+    new OceanController(io),
+    new DeepBreathController(io),
+    new GroundingController(io),
+    new WhiteboardController(io),
 
-// Initialize FairWar Controlers
-new FairWarManager(io);
+    // Initialize Green Legacy Controller
+    new GreenLegacy(io),
+    // Initialize Fair War Controller
+    new FairWarManager(io),
+    // Initialize Emotions Tree Controller
+    new EmotionsTreeManager(io),
+];
 
-// Run Server
-const PORT = process.env.PORT || 4000;
-server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+io.on('connection', (socket) => {
+    controllers.forEach((c) => c.bind && c.bind(socket));
 });
+
+const PORT = process.env.PORT || 4000;
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

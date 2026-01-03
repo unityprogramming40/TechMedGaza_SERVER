@@ -1,5 +1,3 @@
-const PlayerTransform = require('../models/player/PlayerTransform');
-
 const MainController = require('../PsychotherapyControllers/mainController');
 
 class PlayerController extends MainController {
@@ -8,42 +6,28 @@ class PlayerController extends MainController {
      */
     constructor(io) {
         super(io);
-        
         this.currentScene = "";
-
-        this.initializeSocketEvents(io);
     }
-
     /**
-     * Initializes Socket.IO event listeners for player-related events.
-     * @param {object} io - The Socket.IO instance.
+     * Called from server.js inside the SINGLE io.on('connection', ...)
+     * @param {object} socket - the connected socket
      */
-    initializeSocketEvents(io) {
-        io.on('connection', (socket) => {
+    bind(socket) {
 
+        this.Debug('New client connected to PlayerController.');
+        if (this.currentScene && this.currentScene !== "") {
+            this.Debug(`Loading saved scene for new connection: ${this.currentScene}`);
+            this.SendSocketEmit(socket, "app_opened", { scene: this.currentScene }, "app_opened_late", "app_opened_late failed"
+            );
+        }
 
-            this.Debug('New client connected to PlayerController.');
-
-            if (this.currentScene && this.currentScene !== "") {
-                this.Debug(`Loading saved scene for new connection: ${this.currentScene}`);
-                this.SendSocketEmit(socket, "app_opened", { scene: this.currentScene }, "app_opened_late", "app_opened_late failed")
-            }
-
-            socket.on('app_opened', (data) => {
-                this.Debug('app_opened :' + data.scene);
-
-                this.currentScene = data.scene;
-
-                this.SendSocketBroadcast(socket, "app_opened", data, "app_opened", "app_opened failed", false)
-            });
-
-
+        socket.on('app_opened', (data) => {
+            const scene = data?.scene ?? "";
+            this.Debug('app_opened :' + scene);
+            this.currentScene = scene;
+            this.SendSocketBroadcast(socket, "app_opened", { scene }, "app_opened", "app_opened failed", false);
         });
     }
-
-
-
 }
-
 
 module.exports = PlayerController;
