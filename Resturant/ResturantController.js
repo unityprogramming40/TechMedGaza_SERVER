@@ -1,5 +1,5 @@
 
-const MainController = require('../PsychotherapyControllers/mainController');
+const MainController = require('../MainConrtollers/mainController');
 
 class ResturantController extends MainController {
     /**
@@ -9,7 +9,7 @@ class ResturantController extends MainController {
         super(io);
 
         this.initializeSocketEvents(io);
-  
+
 
     }
 
@@ -20,8 +20,22 @@ class ResturantController extends MainController {
     initializeSocketEvents(io) {
         io.on('connection', (socket) => {
 
-            // SyncPlayerE
-            
+            socket.on('New Customer', (data) => {
+                this.SendSocketALL(socket, 'New Customer', data, 'New Customer sent', 'New Customer failed');
+                console.log(data)
+            });
+
+
+            socket.on('SyncObject', (data) => {
+                this.SendSocketALL(socket, 'SyncObject', data, 'SyncObject sent', 'SyncObject failed',false);
+                console.log(data.ID)
+            });
+
+
+            socket.on('NextWord', (data) => {
+                this.SendSocketALL(socket, 'NextWord', data, 'NextWord sent', 'NextWord failed');
+                console.log(data)
+            });
         });
     }
 
