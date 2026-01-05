@@ -25,13 +25,6 @@ class ResturantController extends MainController {
                 console.log(data)
             });
 
-
-            socket.on('SyncObject', (data) => {
-                this.SendSocketALL(socket, 'SyncObject', data, 'SyncObject sent', 'SyncObject failed',false);
-                console.log(data.ID)
-            });
-
-
             socket.on('NextWord', (data) => {
                 this.SendSocketALL(socket, 'NextWord', data, 'NextWord sent', 'NextWord failed');
                 console.log(data)
