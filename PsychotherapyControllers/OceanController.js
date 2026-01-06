@@ -1,5 +1,5 @@
 
-const MainController = require('./mainController');
+const MainController = require('../MainConrtollers/mainController');
 
 class OceanController extends MainController {
     /**

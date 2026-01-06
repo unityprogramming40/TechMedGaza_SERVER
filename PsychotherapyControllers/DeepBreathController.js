@@ -1,4 +1,4 @@
-const MainController = require('./mainController');
+const MainController = require('../MainConrtollers/mainController');
 
 class DeepBreathController extends MainController {
     /**

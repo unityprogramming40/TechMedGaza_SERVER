@@ -1,5 +1,5 @@
 
-const MainController = require('../PsychotherapyControllers/mainController');
+const MainController = require('../MainConrtollers/mainController');
 
 class AdminController extends MainController {
     /**

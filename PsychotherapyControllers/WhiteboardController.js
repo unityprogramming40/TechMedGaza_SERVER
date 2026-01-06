@@ -1,6 +1,5 @@
 // WhiteboardController.js
-const MainController = require('./mainController');
-
+const MainController = require('../MainConrtollers/mainController');
 class WhiteboardController extends MainController {
   /**
      * @param {object} io - The Socket.IO instance.

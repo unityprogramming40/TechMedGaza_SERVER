@@ -1,4 +1,4 @@
-const MainController = require('../PsychotherapyControllers/mainController');
+const MainController = require('../MainConrtollers/mainController');
 
 class GreenLegacy extends MainController {
     /**

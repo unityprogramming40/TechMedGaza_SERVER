@@ -1,5 +1,4 @@
-
-const MainController = require('./mainController');
+const MainController = require('../MainConrtollers/mainController');
 
 class GroundingController extends MainController {
     /**

@@ -1,4 +1,4 @@
-const MainController = require('../PsychotherapyControllers/mainController');
+const MainController = require('../MainConrtollers/mainController');
 
 class EmotionsTreeManager extends MainController {
     /**
@@ -28,7 +28,9 @@ class EmotionsTreeManager extends MainController {
         socket.on('tree_clear_tree', (data) => {
             this.SendSocketBroadcast(socket, 'tree_clear_tree', data, 'tree_clear_tree sent', 'tree_clear_tree failed');
         });
-
+        socket.on('SyncObject', (data) => {
+            this.SendSocketBroadcast(socket, "SyncObject", data, "SyncObject sent", "SyncObject failed", false);
+        });
     }
 }
 
