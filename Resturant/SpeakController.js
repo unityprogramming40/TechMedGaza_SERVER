@@ -20,12 +20,6 @@ class SpeakController extends MainController {
     initializeSocketEvents(io) {
         io.on('connection', (socket) => {
 
-            socket.on('Sync Player', (/** @type {PlayerTransform} */ data) => {
-                console.log(data)
-
-                this.SendSocketBroadcast(socket, "Sync Player", data, "player Synced", "Player Sync failed")
-            });
-
             socket.on('textUpdate', (data) => {
                 this.SendSocketALL(socket, 'textUpdate', data, 'textUpdate sent', 'textUpdate failed');
                 console.log(data)
