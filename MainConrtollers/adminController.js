@@ -19,10 +19,6 @@ class AdminController extends MainController {
         socket.on('Sync Player', (/** @type {PlayerTransform} */ data) => {
             this.SendSocketBroadcast(socket, "Sync Player", data, "player Synced", "Player Sync failed",false)
         });
-         socket.on('Sync Object', (data) => {
-                this.SendSocketBroadcast(socket, 'Sync Object', data, 'SyncObject sent', 'SyncObject failed',false);
-                console.log(data.ID)
-            });
     }
 }
 

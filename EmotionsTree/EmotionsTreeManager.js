@@ -14,22 +14,27 @@ class EmotionsTreeManager extends MainController {
     bind(socket) {
 
         socket.on('tree_show_input', (data) => {
-            this.SendSocketBroadcast(socket, 'tree_show_input', data, 'tree_show_input sent', 'tree_show_input failed');
+            //console.log('EmotionsTreeManager tree_show_input', data);
+            this.SendSocketALL(socket, 'tree_show_input', data, 'tree_show_input sent', 'tree_show_input failed');
         });
 
         socket.on('tree_hide_input', (data) => {
-            this.SendSocketBroadcast(socket, 'tree_hide_input', data, 'tree_hide_input sent', 'tree_hide_input failed');
+            //console.log('EmotionsTreeManager tree_hide_input', data);
+            this.SendSocketALL(socket, 'tree_hide_input', data, 'tree_hide_input sent', 'tree_hide_input failed');
         });
 
         socket.on('tree_add_part', (data) => {
-            this.SendSocketBroadcast(socket, 'tree_add_part', data, 'tree_add_part sent', 'tree_add_part failed');
+            //console.log('EmotionsTreeManager tree_add_part', data);
+            this.SendSocketALL(socket, 'tree_add_part', data, 'tree_add_part sent', 'tree_add_part failed');
         });
 
         socket.on('tree_clear_tree', (data) => {
-            this.SendSocketBroadcast(socket, 'tree_clear_tree', data, 'tree_clear_tree sent', 'tree_clear_tree failed');
+            //console.log('EmotionsTreeManager tree_clear_tree', data);
+            this.SendSocketALL(socket, 'tree_clear_tree', data, 'tree_clear_tree sent', 'tree_clear_tree failed');
         });
-        socket.on('SyncObject', (data) => {
-            this.SendSocketBroadcast(socket, "SyncObject", data, "SyncObject sent", "SyncObject failed", false);
+
+        socket.on('sync_object', (data) => {
+            this.SendSocketBroadcast(socket, `sync_object`, data, `sync_object_${data.objectId} sent`, `sync_object_${data.objectId} failed`);
         });
     }
 }

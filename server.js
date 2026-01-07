@@ -50,7 +50,7 @@ const controllers = [
     // Initialize Emotions Tree Controller
     new EmotionsTreeManager(io),
 
-    
+
     // Initialize ResturantController
     new ResturantController(io),
     // Initialize SpeakController
