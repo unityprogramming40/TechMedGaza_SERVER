@@ -22,8 +22,10 @@ const FairWarManager = require('./FairWarControlers/FairWarManager');
 
 // Emotions Tree Controllers
 const EmotionsTreeManager = require('./EmotionsTree/EmotionsTreeManager');
+
 const ResturantController = require('./Resturant/ResturantController');
 const SpeakController = require('./Resturant/SpeakController');
+const FairSoulationController = require('./Resturant/FairSoulationController');
 
 const app = expressApp();
 const server = http.createServer(app);
@@ -55,6 +57,9 @@ const controllers = [
     new ResturantController(io),
     // Initialize SpeakController
     new SpeakController(io),
+    
+    // Initialize SpeakController
+    new FairSoulationController(io),
 ];
 
 io.on('connection', (socket) => {

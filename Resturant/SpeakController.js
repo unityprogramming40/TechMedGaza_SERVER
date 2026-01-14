@@ -7,18 +7,13 @@ class SpeakController extends MainController {
      */
     constructor(io) {
         super(io);
-
-        this.initializeSocketEvents(io);
-
-
     }
 
     /**
      * Initializes Socket.IO event listeners for player-related events.
-     * @param {object} io - The Socket.IO instance.
+     * @param {object} socket - The Socket.IO instance.
      */
-    initializeSocketEvents(io) {
-        io.on('connection', (socket) => {
+    bind(socket) {
 
             socket.on('textUpdate', (data) => {
                 this.SendSocketALL(socket, 'textUpdate', data, 'textUpdate sent', 'textUpdate failed');
@@ -31,7 +26,6 @@ class SpeakController extends MainController {
                 console.log(data)
             });
 
-        });
     }
 
 

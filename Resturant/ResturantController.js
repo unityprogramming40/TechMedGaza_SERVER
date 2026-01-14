@@ -7,18 +7,13 @@ class ResturantController extends MainController {
      */
     constructor(io) {
         super(io);
-
-        this.initializeSocketEvents(io);
-
-
     }
 
     /**
      * Initializes Socket.IO event listeners for player-related events.
-     * @param {object} io - The Socket.IO instance.
+     * @param {object} socket - The Socket.IO instance.
      */
-    initializeSocketEvents(io) {
-        io.on('connection', (socket) => {
+    bind(socket) {
 
             socket.on('New Customer', (data) => {
                 this.SendSocketALL(socket, 'New Customer', data, 'New Customer sent', 'New Customer failed');
@@ -29,7 +24,6 @@ class ResturantController extends MainController {
                 this.SendSocketALL(socket, 'NextWord', data, 'NextWord sent', 'NextWord failed');
                 console.log(data)
             });
-        });
     }
 
 
