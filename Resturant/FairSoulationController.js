@@ -20,10 +20,12 @@ class FairSoulationController extends MainController {
                 console.log(data)
             });
 
+            
+            socket.on('Sync Object Mesh', (data) => {
+                this.SendSocketBroadcast(socket, 'Sync Object Mesh', data, 'Sync Object Mesh sent', 'Sync Object Mesh failed');
+                console.log(data)
+            });
     }
-
-
-
 }
 
 
