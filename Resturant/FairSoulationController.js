@@ -15,8 +15,8 @@ class FairSoulationController extends MainController {
      */
     bind(socket) {
 
-            socket.on('New Title', (data) => {
-                this.SendSocketALL(socket, 'New Title', data, 'New Title sent', 'New Title failed');
+            socket.on('New Image', (data) => {
+                this.SendSocketALL(socket, 'New Image', data, 'New Title sent', 'New Title failed');
                 console.log(data)
             });
 

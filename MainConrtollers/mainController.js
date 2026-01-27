@@ -1,4 +1,4 @@
-const Logger = require("../models/Logger/Logger");
+// const Logger = require("../models/Logger/Logger");
 
 /**
  * MainController handles socket communication and logging in the application.
@@ -9,7 +9,7 @@ class MainController {
      */
     constructor(io) {
         this.io = io;
-        this.logger = new Logger();
+        // this.logger = new Logger();
         this.admin = false;
     }
 
