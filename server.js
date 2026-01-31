@@ -26,6 +26,7 @@ const EmotionsTreeManager = require('./EmotionsTree/EmotionsTreeManager');
 const ResturantController = require('./Resturant/ResturantController');
 const SpeakController = require('./Resturant/SpeakController');
 const FairSoulationController = require('./Resturant/FairSoulationController');
+const TempController = require('./Temp_001/Temp_001');
 
 const app = expressApp();
 const server = http.createServer(app);
@@ -57,9 +58,11 @@ const controllers = [
     new ResturantController(io),
     // Initialize SpeakController
     new SpeakController(io),
-    
     // Initialize SpeakController
     new FairSoulationController(io),
+
+    new TempController(io)
+
 ];
 
 io.on('connection', (socket) => {

@@ -19,10 +19,20 @@ class SpeakController extends MainController {
                 this.SendSocketALL(socket, 'textUpdate', data, 'textUpdate sent', 'textUpdate failed');
                 console.log(data)
             });
-
             
             socket.on('clab', (data) => {
-                this.SendSocketALL(socket, 'clab', data, 'clab sent', 'clab failed');
+                this.SendSocketBroadcast(socket, 'clab', data, 'clab sent', 'clab failed');
+                console.log(data)
+            });
+            
+            
+            socket.on('wronge answer', (data) => {
+                this.SendSocketBroadcast(socket, 'wronge answer', data, 'wronge answer sent', 'wronge answer failed');
+                console.log(data)
+            });
+
+            socket.on('recognizer text', (data) => {
+                this.SendSocketBroadcast(socket, 'recognizer text', data, 'recognizer text sent', 'recognizer text failed');
                 console.log(data)
             });
 
