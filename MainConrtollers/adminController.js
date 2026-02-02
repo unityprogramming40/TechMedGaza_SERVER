@@ -17,11 +17,15 @@ class AdminController extends MainController {
         this.Debug('Admin connected.');
 
         socket.on('Sync Player', (/** @type {PlayerTransform} */ data) => {
-            this.SendSocketBroadcast(socket, "Sync Player", data, "player Synced", "Player Sync failed",false)
+            this.SendSocketBroadcast(socket, "Sync Player", data, "player Synced", "Player Sync failed", false)
         });
-         socket.on('Sync Object', (data) => {
-                this.SendSocketBroadcast(socket, 'Sync Object', data, 'SyncObject sent', 'SyncObject failed',false);
-            });
+        socket.on('Sync Object', (data) => {
+            this.SendSocketBroadcast(socket, 'Sync Object', data, 'SyncObject sent', 'SyncObject failed', false);
+        });
+        socket.on("genderSelected", data => {
+            console.log("genderSelected received:", data);
+            this.SendSocketALL(socket, "genderSelected", data, "genderSelected sent", "genderSelected failed", false);
+        });
     }
 }
 
