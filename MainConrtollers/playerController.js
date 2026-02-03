@@ -27,6 +27,11 @@ class PlayerController extends MainController {
             this.currentScene = scene;
             this.SendSocketBroadcast(socket, "app_opened", { scene }, "app_opened", "app_opened failed", false);
         });
+
+        socket.on("disconnect", () => {
+            this.Debug('disconnect :' + socket.id);
+
+    });
     }
 }
 

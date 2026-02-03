@@ -24,9 +24,15 @@ class AdminController extends MainController {
         });
         socket.on("genderSelected", data => {
             console.log("genderSelected received:", data);
-            this.SendSocketALL(socket, "genderSelected", data, "genderSelected sent", "genderSelected failed", false);
+            this.SendSocketBroadcast(socket, "genderSelected", data, "genderSelected sent", "genderSelected failed", false);
+
         });
+        socket.on('Sync Hand Fingers', (/** @type {PlayerTransform} */ data) => {
+            this.SendSocketBroadcast(socket, "Sync Hand Fingers", data, "Sync Hand Fingers Synced", "Sync Hand Fingers failed", false)
+        });
+    
     }
+    
 }
 
 
