@@ -21,7 +21,8 @@ class FairWarManager extends MainController {
             this.SendSocketBroadcast(socket, "airplan_audio", data, "airplan_audio sent", "airplan_audio failed", false)
         });
 
-    }
+    } 
+    
 }
 
 module.exports = FairWarManager;
