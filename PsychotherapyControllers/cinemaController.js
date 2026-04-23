@@ -89,6 +89,12 @@ class CinemaController extends MainController {
             this.SendSocketBroadcast(socket, 'fx_stop', data || { ok: true }, 'fx_stop sent', 'fx_stop failed', false);
         });
 
+        //---------------People-----------------
+
+        socket.on('people_toggle', (data) => {
+            //console.log('people_toggle event received with data:', data);
+            this.SendSocketBroadcast(socket, 'people_toggle', data, 'people_toggle sent', 'people_toggle failed', false);
+        });
     }
 }
 
