@@ -31,6 +31,11 @@ class EmptyChairController extends MainController {
             this.SendSocketBroadcast(socket, "charachter", data, "charachter sent", "charachter failed", false)
         });
 
+        
+        socket.on('fooding', (data) => {
+            this.SendSocketBroadcast(socket, "fooding", data, "fooding", "fooding")
+        });
+
     }
 }
 

@@ -21,7 +21,7 @@ class OceanController extends MainController {
             this.SendSocketBroadcast(socket, "move_ship", data, "move_ship sent", "move_ship failed")
         });
         socket.on('SyncBoat', (data) => {
-            this.SendSocketBroadcast(socket, "SyncBoat", data, "SyncBoat sent", "SyncBoat failed")
+            this.SendSocketBroadcast(socket, "SyncBoat", data, "SyncBoat sent", "SyncBoat failed",false)
         });
 
         socket.on('ocean_audio', (data) => {
