@@ -95,6 +95,18 @@ class CinemaController extends MainController {
             //console.log('people_toggle event received with data:', data);
             this.SendSocketBroadcast(socket, 'people_toggle', data, 'people_toggle sent', 'people_toggle failed', false);
         });
+
+        //---------------Pre-Cinema Audio-----------------
+
+        socket.on('precinema_audio_stop', (data) => {
+            //console.log('precinema_audio_stop event received with data:', data);
+            this.SendSocketBroadcast(socket, 'precinema_audio_stop', data || { ok: true }, 'precinema_audio_stop sent', 'precinema_audio_stop failed', false);
+        });
+
+        socket.on('precinema_audio_start', (data) => {
+           //console.log('precinema_audio_start event received with data:', data); 
+            this.SendSocketBroadcast(socket, 'precinema_audio_start', data || { ok: true }, 'precinema_audio_start sent', 'precinema_audio_start failed', false);
+        });
     }
 }
 
