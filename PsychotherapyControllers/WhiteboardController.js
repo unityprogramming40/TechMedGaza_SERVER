@@ -30,8 +30,12 @@ class WhiteboardController extends MainController {
     });
 
     socket.on('wb_text_set', (data) => {
-      console.log('[WhiteboardController] wb_text_set received:', data);
+      //console.log('[WhiteboardController] wb_text_set received:', data);
       this.SendSocketALL(socket, 'wb_text_set', data, 'wb_text_set sent', 'wb_text_set failed', false);
+    });
+    socket.on('wb_keyboard_text', (data) => {
+      //console.log('[WhiteboardController] wb_keyboard_text received:', data);
+      this.SendSocketALL(socket, 'wb_keyboard_text', data, 'wb_keyboard_text sent', 'wb_keyboard_text failed', false);
     });
   }
 }
