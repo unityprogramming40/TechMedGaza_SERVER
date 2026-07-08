@@ -36,6 +36,11 @@ class EmptyChairController extends MainController {
             this.SendSocketALL(socket, "fooding", data, "fooding", "fooding failed",false)
         });
 
+        
+        socket.on('Sync Animals', (data) => {
+            this.SendSocketBroadcast(socket, "Sync Animals", data, "Sync Animals", "Sync Animals failed", false)
+        });
+
     }
 }
 

@@ -6,7 +6,7 @@ class PlayerController extends MainController {
      */
     constructor(io) {
         super(io);
-        this.currentScene = "";
+        this.currentScene = "Empty Chair";
     }
     /**
      * Called from server.js inside the SINGLE io.on('connection', ...)
