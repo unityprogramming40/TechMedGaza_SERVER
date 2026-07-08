@@ -2,9 +2,9 @@
 const MainController = require('../MainConrtollers/mainController');
 
 class EmptyChairController extends MainController {
-   /**
-     * @param {object} io - The Socket.IO instance.
-     */
+    /**
+      * @param {object} io - The Socket.IO instance.
+      */
     constructor(io) {
         super(io);
     }
@@ -31,16 +31,19 @@ class EmptyChairController extends MainController {
             this.SendSocketBroadcast(socket, "charachter", data, "charachter sent", "charachter failed", false)
         });
 
-        
+
         socket.on('fooding', (data) => {
-            this.SendSocketALL(socket, "fooding", data, "fooding", "fooding failed",false)
+            this.SendSocketALL(socket, "fooding", data, "fooding", "fooding failed", false)
         });
 
-        
+
         socket.on('Sync Animals', (data) => {
             this.SendSocketBroadcast(socket, "Sync Animals", data, "Sync Animals", "Sync Animals failed", false)
         });
 
+        socket.on('animal', (data) => {
+            this.SendSocketALL(socket, "animal", data, "animal sent", "animal failed", false)
+        });
     }
 }
 
