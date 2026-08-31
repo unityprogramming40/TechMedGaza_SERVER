@@ -30,7 +30,12 @@ class AdminController extends MainController {
         socket.on('Sync Hand Fingers', (/** @type {PlayerTransform} */ data) => {
             this.SendSocketBroadcast(socket, "Sync Hand Fingers", data, "Sync Hand Fingers Synced", "Sync Hand Fingers failed", false)
         });
-    
+
+       socket.on('Changing Player Height', (data) => {
+        //console.log('change-player-y received:', data);
+            this.SendSocketALL(socket, 'Changing Player Height', data);
+        })
+
     }
     
 }
